@@ -202,7 +202,7 @@
 
       <p><strong>Vocabulary and Progress:</strong> Words you save to your vault, your spaced-repetition review schedule, your daily word streak, and session statistics (message counts, new words learned, fluency scores).</p>
 
-      <p><strong>Chat Session Content:</strong> If you are a Pro subscriber, the messages you send during a tutoring session with Lena are processed in real time to generate the tutor's replies and to detect grammar errors. Only the specific error fragments (the incorrect text and its correction) are stored against your grammar profile — we do not store full chat transcripts. The system prompt used for a session (containing your profile snapshot, not your messages) is retained for debugging.</p>
+      <p><strong>Chat Session Content:</strong> The messages you send during a tutoring session with Lena are processed in real time to generate the tutor's replies and to detect grammar errors. Only the specific error fragments (the incorrect text and its correction) are stored against your grammar profile — we do not store full chat transcripts. The system prompt used for a session (containing your profile snapshot, not your messages) is retained for debugging.</p>
 
       <p><strong>Push Notification Token:</strong> A device token used to deliver your daily word reminder.</p>
 
@@ -214,10 +214,9 @@
       <ul>
         <li>To authenticate your account and sync your progress across devices</li>
         <li>To generate a personalised daily word based on your level, interests, and weak grammar points</li>
-        <li>To power your Pro tutoring conversations and classify grammar errors so we can track your mastery of German grammar rules</li>
+        <li>To power your tutoring conversations and classify grammar errors so we can track your mastery of German grammar rules</li>
         <li>To schedule vocabulary reviews using spaced repetition</li>
         <li>To send you a daily push notification when your word is ready</li>
-        <li>To manage your Pro subscription status</li>
         <li>To improve app performance and fix bugs</li>
       </ul>
 
@@ -245,11 +244,6 @@
           <td><strong>Firebase</strong></td>
           <td>Email address, authentication tokens, push notification token</td>
           <td>Google Sign-In authentication and daily word push notifications</td>
-        </tr>
-        <tr>
-          <td><strong>RevenueCat</strong></td>
-          <td>Subscription status, purchase history, user identifier</td>
-          <td>Manages Pro subscription billing across the Play Store</td>
         </tr>
         <tr>
           <td><strong>Upstash</strong></td>
