@@ -190,118 +190,86 @@
   <div class="container">
     <div class="card">
       <h2>Privacy Policy</h2>
-      <p class="last-updated">Last updated: July 26, 2026</p>
+      <p class="last-updated">Last updated: September 12, 2026</p>
 
-      <p>GermanBuddy ("we", "our", or "the app") is developed and operated by Giacomo Matzeu as a solo developer based in Italy. This privacy policy explains how we collect, use, and protect your information when you use the GermanBuddy mobile application.</p>
+      <div class="info-box">
+        <p><strong>In short:</strong> GermanBuddy has no account, no server, and no backend. Everything you do in the app — your level, your saved words, your streak, your review schedule — is stored only in a local database on your own device. We (the developer) never receive it, see it, or store a copy of it anywhere.</p>
+      </div>
 
-      <h3>1. Information We Collect</h3>
+      <p>GermanBuddy ("we", "our", or "the app") is developed by Giacomo Matzeu as a solo developer based in Italy. This privacy policy explains what data the app creates on your device, what — if anything — ever leaves it, and why.</p>
 
-      <p><strong>Account Information:</strong> When you sign in with Google, we collect your email address. This is required to create your account and sync your progress across sessions.</p>
+      <h3>1. There Is No Account</h3>
+      <p>GermanBuddy does not require sign-in and has no user accounts. There is no email address, password, or Google Sign-In involved in using the app. A short on-device "learner profile" (your CEFR level and native language) is created automatically the first time you open the app, tied only to a randomly generated install ID that never leaves your device.</p>
 
-      <p><strong>Learner Profile:</strong> Your CEFR level (A1–C2), topic preferences, tutor persona settings, and grammar weakness tracking. This data drives which word you receive each day and how your tutor session is built.</p>
-
-      <p><strong>Vocabulary and Progress:</strong> Words you save to your vault, your spaced-repetition review schedule, your daily word streak, and session statistics (message counts, new words learned, fluency scores).</p>
-
-      <p><strong>Chat Session Content:</strong> The messages you send during a tutoring session with Lena are processed in real time to generate the tutor's replies and to detect grammar errors. Only the specific error fragments (the incorrect text and its correction) are stored against your grammar profile — we do not store full chat transcripts. The system prompt used for a session (containing your profile snapshot, not your messages) is retained for debugging.</p>
-
-      <p><strong>Push Notification Token:</strong> A device token used to deliver your daily word reminder.</p>
-
-      <p><strong>Usage Data:</strong> We may collect crash logs and basic app interaction data to improve the app experience.</p>
-
-      <h3>2. How We Use Your Information</h3>
-
-      <p>We use your information solely to provide and improve the GermanBuddy app:</p>
+      <h3>2. Data Stored On Your Device</h3>
+      <p>All app data lives in a local SQLite database and a small amount of local key-value storage on your phone (via <code>expo-sqlite</code> and MMKV). This includes:</p>
       <ul>
-        <li>To authenticate your account and sync your progress across devices</li>
-        <li>To generate a personalised daily word based on your level, interests, and weak grammar points</li>
-        <li>To power your tutoring conversations and classify grammar errors so we can track your mastery of German grammar rules</li>
-        <li>To schedule vocabulary reviews using spaced repetition</li>
-        <li>To send you a daily push notification when your word is ready</li>
-        <li>To improve app performance and fix bugs</li>
+        <li><strong>Learner profile:</strong> your CEFR level (A1–C2) and native/UI language</li>
+        <li><strong>Vocabulary and progress:</strong> words you've saved, your spaced-repetition (SRS) review schedule, your daily word streak, and your history of daily words</li>
+        <li><strong>Settings:</strong> notification preferences and, if you choose to use the optional AI feature described below, your own Anthropic API key</li>
       </ul>
+      <p>None of this data is transmitted anywhere by default. There is no backend server for GermanBuddy to send it to.</p>
 
-      <h3>3. Third-Party Service Providers</h3>
+      <h3>3. Optional AI Feature ("Explore Further")</h3>
+      <p>GermanBuddy includes one optional, opt-in AI feature that generates extra examples and a short usage note for a word you've saved. It is off until you turn it on, and it works differently from a typical app AI feature:</p>
+      <ul>
+        <li>You must enter your own Anthropic (Claude) API key in Settings — the app ships with no key of its own</li>
+        <li>When you use the feature, your device calls the Anthropic API <strong>directly</strong>, with your key — there is no GermanBuddy server in between and nothing is proxied or logged by us</li>
+        <li>Only the word, its level, and your native language are sent to Anthropic to generate the response — never your saved word list, profile, or any other app data</li>
+        <li>Your API key is stored locally on your device only. It is never included in backup exports (see below) and never sent anywhere except directly to Anthropic's API as required to authenticate the request</li>
+      </ul>
+      <p>Use of this feature is subject to <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic's own privacy policy</a>, since your device is communicating with Anthropic directly using your own key and your own Anthropic account/usage limits.</p>
 
-      <p>We use trusted third-party services to provide app functionality. These providers process data on our behalf and are not permitted to use your data for their own purposes.</p>
+      <h3>4. Local Notifications</h3>
+      <p>If you enable reminders, GermanBuddy schedules local notifications (for your daily word and spaced-repetition reviews) directly on your device using the operating system's notification scheduler. No push token, device identifier, or notification content is sent to us or to any third party — the reminder never leaves your phone.</p>
 
+      <h3>5. Backup &amp; Restore</h3>
+      <p>You can export a backup of your data as a single <code>.json</code> file from Settings. This is entirely user-initiated: the app hands the file to your device's normal share sheet, and it's up to you where you save it (e.g. Google Drive, Files, email to yourself). We never receive a copy of this file. Your Anthropic API key, if set, is deliberately excluded from backup exports. Restoring a backup replaces the data on your device only.</p>
+
+      <h3>6. Third Parties</h3>
+      <p>Because the app has no backend, there are very few third parties involved, and none of them are processors of your app data in the traditional sense:</p>
       <table>
         <tr>
           <th>Service</th>
-          <th>Data Processed</th>
-          <th>Purpose</th>
-        </tr>
-        <tr>
-          <td><strong>Supabase</strong></td>
-          <td>Account data, learner profile, vocabulary vault, session and grammar records</td>
-          <td>Backend database (PostgreSQL) and storage</td>
+          <th>What it sees</th>
+          <th>When</th>
         </tr>
         <tr>
           <td><strong>Anthropic (Claude API)</strong></td>
-          <td>Chat messages (processed in real time, not persisted as transcripts), profile snapshot used to build prompts</td>
-          <td>Generates your daily word, powers tutor conversations, classifies grammar errors</td>
+          <td>A single word, CEFR level, and native language — nothing else</td>
+          <td>Only if you set your own API key and use "Explore Further"</td>
         </tr>
         <tr>
-          <td><strong>Firebase</strong></td>
-          <td>Email address, authentication tokens, push notification token</td>
-          <td>Google Sign-In authentication and daily word push notifications</td>
+          <td><strong>Google Play</strong></td>
+          <td>Standard install/crash diagnostics collected by the Play Store platform itself</td>
+          <td>Always (governed by Google's own privacy policy, not ours)</td>
         </tr>
         <tr>
-          <td><strong>Upstash</strong></td>
-          <td>Short-lived cache data</td>
-          <td>Performance caching, not used for long-term storage</td>
-        </tr>
-        <tr>
-          <td><strong>Sentry</strong></td>
-          <td>Crash logs and error metadata (session and error identifiers only, never message content)</td>
-          <td>Error tracking and stability monitoring</td>
-        </tr>
-        <tr>
-          <td><strong>Railway</strong></td>
-          <td>N/A (infrastructure only)</td>
-          <td>Hosts our backend server and nightly word-generation job</td>
+          <td><strong>Formspree</strong></td>
+          <td>Your name/email and message, only if you submit the <a href="contact.html">contact form</a> on this support site</td>
+          <td>Only if you contact us — this is our support website, not the app</td>
         </tr>
       </table>
+      <p>We do not use Supabase, Firebase, Railway, Upstash, or Sentry — earlier drafts of this policy referenced a cloud backend that GermanBuddy no longer has.</p>
 
-      <h3>4. Data Sharing</h3>
+      <h3>7. Data Sharing</h3>
+      <p>We do not sell, trade, or rent any information. There is no advertising or analytics SDK in the app, and no data collection to share in the first place — your app data simply stays on your device.</p>
 
-      <p>We do not sell, trade, or rent your personal information to third parties. We do not share your data for advertising or marketing purposes. Data is only sent to the service providers listed above to deliver app functionality.</p>
+      <h3>8. Deleting Your Data</h3>
+      <p>Since your data lives only on your device, you are always in full control of it. See the <a href="delete-account.html">Delete Your Data</a> page for how to remove it — uninstalling the app, or clearing its storage from your phone's settings, permanently deletes everything immediately. There is nothing stored on a server for us to delete on your behalf.</p>
 
-      <h3>5. Data Storage and Security</h3>
+      <h3>9. Children's Privacy</h3>
+      <p>GermanBuddy is designed for adult learners aged 18 and above and is not directed at children. Since the app collects no personal information from anyone, there is no data from children under 13 for us to hold or delete.</p>
 
-      <p>Your data is stored securely on Supabase servers. All data transmitted between the app and our servers is encrypted using HTTPS/TLS. We implement appropriate technical measures to protect your information from unauthorized access. Chat message content is never logged beyond the specific grammar error fragments described above.</p>
+      <h3>10. Changes to This Policy</h3>
+      <p>We may update this privacy policy from time to time — for example, as new opt-in features are added. We will note material changes here with an updated "last updated" date. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
 
-      <h3>6. Data Retention</h3>
-
-      <p>We retain your data for as long as your account is active. If you request account deletion, all your data — including your learner profile, vocabulary vault, session history, and grammar tracking — will be permanently removed within 30 days. Certain data may be retained in encrypted backups for up to 90 days after deletion.</p>
-
-      <h3>7. Your Rights</h3>
-
-      <p>Under applicable laws, including the EU General Data Protection Regulation (GDPR), you have the right to:</p>
-      <ul>
-        <li><strong>Access</strong> your personal data</li>
-        <li><strong>Correct</strong> inaccurate data</li>
-        <li><strong>Delete</strong> your account and all associated data</li>
-        <li><strong>Export</strong> your data in a portable format</li>
-        <li><strong>Withdraw consent</strong> for optional data collection</li>
-      </ul>
-
-      <p>To exercise any of these rights, <a href="contact.html">contact us</a> or use the <a href="delete-account.html">account deletion form</a>.</p>
-
-      <h3>8. Children's Privacy</h3>
-
-      <p>GermanBuddy is designed for adult learners aged 18 and above. We do not knowingly collect personal information from children under 13. If we learn that we have collected data from a child under 13, we will promptly delete it.</p>
-
-      <h3>9. Changes to This Policy</h3>
-
-      <p>We may update this privacy policy from time to time. We will notify you of any material changes by posting the updated policy in the app or via email. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
-
-      <h3>10. Contact Us</h3>
-
+      <h3>11. Contact Us</h3>
       <div class="info-box">
         <p>
           <strong>Giacomo Matzeu</strong><br>
           GermanBuddy App Developer<br>
-          <a href="contact.html">Contact us</a> &middot; <a href="delete-account.html">Delete account</a>
+          <a href="contact.html">Contact us</a> &middot; <a href="delete-account.html">Delete your data</a>
         </p>
       </div>
 
@@ -309,7 +277,7 @@
   </div>
 
   <div class="footer">
-    <p>&copy; 2026 GermanBuddy &middot; <a href="contact.html">Contact</a> &middot; <a href="terms-of-service.html">Terms of Service</a> &middot; <a href="delete-account.html">Delete Account</a></p>
+    <p>&copy; 2026 GermanBuddy &middot; <a href="contact.html">Contact</a> &middot; <a href="terms-of-service.html">Terms of Service</a> &middot; <a href="delete-account.html">Delete Your Data</a></p>
   </div>
 
 </body>

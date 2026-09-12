@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Delete Account — GermanBuddy</title>
+  <title>Delete Your Data — GermanBuddy</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -66,7 +66,7 @@
 
     .container {
       width: 100%;
-      max-width: 520px;
+      max-width: 560px;
       padding: 32px 20px 48px;
     }
 
@@ -85,11 +85,24 @@
       margin-bottom: 8px;
     }
 
+    .card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--primary-dark);
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+
     .card p {
-      color: var(--text-muted);
+      color: var(--text);
       font-size: 15px;
-      line-height: 1.6;
-      margin-bottom: 20px;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .card p.muted {
+      color: var(--text-muted);
     }
 
     .info-box {
@@ -97,10 +110,10 @@
       border-left: 3px solid var(--gold);
       border-radius: 0 8px 8px 0;
       padding: 16px;
-      margin-bottom: 24px;
+      margin: 16px 0 24px;
     }
 
-    .info-box h3 {
+    .info-box h4 {
       font-size: 14px;
       font-weight: 600;
       color: var(--primary-dark);
@@ -128,129 +141,53 @@
       font-weight: bold;
     }
 
-    .form-group {
-      margin-bottom: 16px;
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
     }
 
-    label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding: 4px 0 4px 34px;
+      font-size: 15px;
+      line-height: 1.6;
       color: var(--text);
       margin-bottom: 6px;
     }
 
-    input[type="email"],
-    textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      color: var(--text);
-      background: var(--white);
-      transition: border-color 0.2s;
-      outline: none;
-    }
-
-    input[type="email"]:focus,
-    textarea:focus {
-      border-color: var(--primary);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .checkbox-group {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin: 20px 0 24px;
-    }
-
-    .checkbox-group input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      margin-top: 2px;
-      accent-color: var(--primary);
-      flex-shrink: 0;
-    }
-
-    .checkbox-group label {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--text-muted);
-      line-height: 1.5;
-      cursor: pointer;
-    }
-
-    .btn {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-danger {
-      background: var(--error);
-      color: var(--white);
-    }
-
-    .btn-danger:hover {
-      background: #8f1e18;
-    }
-
-    .btn-danger:disabled {
-      background: #ccc;
-      color: #888;
-      cursor: not-allowed;
-      pointer-events: none;
-      opacity: 0.7;
-    }
-
-    .success-message {
-      display: none;
-      text-align: center;
-      padding: 24px;
-    }
-
-    .success-message .checkmark {
-      width: 56px;
-      height: 56px;
-      background: var(--light-green);
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 3px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 16px;
     }
 
-    .success-message .checkmark svg {
-      width: 28px;
-      height: 28px;
-      color: var(--primary);
-    }
-
-    .success-message h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 20px;
+    .platform-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
       color: var(--primary-dark);
-      margin-bottom: 8px;
+      background: var(--light-green);
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
     }
 
-    .success-message p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 0;
+    a {
+      color: var(--primary);
     }
 
     .footer {
@@ -264,6 +201,10 @@
       color: var(--primary);
       text-decoration: none;
     }
+
+    @media (max-width: 600px) {
+      .card { padding: 24px 18px; }
+    }
   </style>
 </head>
 <body>
@@ -275,88 +216,47 @@
 
   <div class="container">
     <div class="card">
-      <div id="formView">
-        <h2>Delete Your Account</h2>
-        <p>We're sorry to see you go. Submitting this form will request the permanent deletion of your GermanBuddy account and all associated data.</p>
+      <h2>Delete Your Data</h2>
+      <p>GermanBuddy has no account and no server — everything the app knows about your learning (your level, saved words, streak, and review schedule) lives only in a local database on your own device. There is nothing stored anywhere else, so there is no remote "account" for us to delete on your behalf, and no waiting period.</p>
 
-        <div class="info-box">
-          <h3>What will be deleted:</h3>
-          <ul>
-            <li>Your profile and learner profile (CEFR level, topic preferences)</li>
-            <li>Your vocabulary vault and spaced-repetition progress</li>
-            <li>Your session history and grammar weakness tracking</li>
-            <li>Your word streak and daily word history</li>
-          </ul>
-        </div>
-
-        <!-- TODO (manual step): replace REPLACE_WITH_GERMANBUDDY_FORMSPREE_ID with the real
-             Formspree form ID once created at formspree.io. -->
-        <form id="deleteForm" onsubmit="handleSubmit(event)">
-          <div class="form-group">
-            <label for="email">Email address associated with your account</label>
-            <input type="email" id="email" name="email" required placeholder="your@email.com">
-          </div>
-
-          <div class="form-group">
-            <label for="reason">Reason for leaving (optional)</label>
-            <textarea id="reason" name="reason" placeholder="Help us improve GermanBuddy..."></textarea>
-          </div>
-
-          <div class="checkbox-group">
-            <input type="checkbox" id="confirm" onchange="toggleSubmit()">
-            <label for="confirm">I understand that this action is permanent and all my data will be deleted within 30 days. This cannot be undone.</label>
-          </div>
-
-          <button type="submit" class="btn btn-danger" id="submitBtn" disabled>Request Account Deletion</button>
-        </form>
+      <div class="info-box">
+        <h4>What's stored on your device:</h4>
+        <ul>
+          <li>Your learner profile (CEFR level, native/UI language)</li>
+          <li>Your saved words and spaced-repetition (SRS) progress</li>
+          <li>Your daily word history and streak</li>
+          <li>Your Anthropic API key, only if you set one for the optional AI feature</li>
+        </ul>
       </div>
 
-      <div class="success-message" id="successView">
-        <div class="checkmark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-        </div>
-        <h3>Request Received</h3>
-        <p>We've received your account deletion request. Your data will be permanently deleted within 30 days. You'll receive a confirmation email once the process is complete.</p>
-      </div>
+      <h3>Delete everything right now</h3>
+      <p>Choose whichever is easiest — both remove all app data immediately and permanently.</p>
+
+      <span class="platform-label">Simplest</span>
+      <ol class="steps">
+        <li>Long-press the GermanBuddy icon on your home screen or app drawer</li>
+        <li>Tap <strong>Uninstall</strong></li>
+      </ol>
+
+      <span class="platform-label">Keep the app, wipe the data</span>
+      <ol class="steps">
+        <li>Open your phone's <strong>Settings</strong> → <strong>Apps</strong></li>
+        <li>Select <strong>GermanBuddy</strong></li>
+        <li>Tap <strong>Storage &amp; cache</strong> → <strong>Clear storage</strong></li>
+      </ol>
+
+      <p class="muted">Either action deletes the app's local database and settings straight away — there's no server-side copy left behind, and nothing for us to process a request for.</p>
+
+      <h3>A note on backups you made yourself</h3>
+      <p class="muted">If you ever used the in-app "Export backup" feature, that created a <code>.json</code> file you chose to save somewhere (e.g. Google Drive, your phone's Files app, or emailed to yourself). Those copies are under your control — deleting them is up to you, wherever you put them. We never receive or keep a copy of your backup file.</p>
+
+      <p>Questions about what data GermanBuddy keeps? See our <a href="privacy-policy.html">Privacy Policy</a>, or <a href="contact.html">contact us</a> if something here doesn't match what you're seeing in the app.</p>
     </div>
   </div>
 
   <div class="footer">
     <p>&copy; 2026 GermanBuddy &middot; <a href="contact.html">Contact</a> &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="terms-of-service.html">Terms of Service</a></p>
   </div>
-
-  <script>
-    function toggleSubmit() {
-      document.getElementById('submitBtn').disabled = !document.getElementById('confirm').checked;
-    }
-
-    async function handleSubmit(e) {
-      e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      btn.disabled = true;
-      btn.textContent = 'Submitting...';
-
-      const res = await fetch('https://formspree.io/f/REPLACE_WITH_GERMANBUDDY_FORMSPREE_ID', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: document.getElementById('email').value,
-          reason: document.getElementById('reason').value,
-        }),
-      });
-
-      if (res.ok) {
-        document.getElementById('formView').style.display = 'none';
-        document.getElementById('successView').style.display = 'block';
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'Request Account Deletion';
-        alert('Something went wrong. Please try again.');
-      }
-    }
-  </script>
 
 </body>
 </html>
