@@ -225,6 +225,8 @@
 
       <h3>5. Backup &amp; Restore</h3>
       <p>You can export a backup of your data as a single <code>.json</code> file from Settings. This is entirely user-initiated: the app hands the file to your device's normal share sheet, and it's up to you where you save it (e.g. Google Drive, Files, email to yourself). We never receive a copy of this file. By default your AI API key is not included in backup exports. If you have set one, the app asks when you export whether to include it; if you choose to, the file will contain your key and provider settings in plain text, so keep that file private. We never receive it. Restoring a backup replaces the data on your device only.</p>
+      <p><strong>Optional automatic backup (Android).</strong> If you turn it on in Settings, the app also writes a backup copy to a folder you choose, shortly after your data changes, and keeps the 10 most recent copies. The app only writes files into that folder using Android's standard folder access; it does not connect to any server. If the folder you choose is kept in sync by another app (for example Google Drive or Dropbox), that app &mdash; not GermanBuddy &mdash; uploads the files, under its own privacy policy. Automatic backups never contain your AI API key or provider settings. Files already written stay in your folder until you delete them.</p>
+      <p><strong>Android's own backup.</strong> If device backup is enabled in your phone's settings, Android may copy the app's database and settings to your Google account as part of its own backup. We neither control nor receive it. The AI API key, notification identifiers and the automatic-backup folder setting are excluded from it.</p>
 
       <h3>6. Third Parties</h3>
       <p>Because the app has no backend, there are very few third parties involved, and none of them are processors of your app data in the traditional sense:</p>
@@ -238,6 +240,11 @@
           <td><strong>The AI provider you choose (Anthropic, OpenAI or a compatible service)</strong></td>
           <td>A single word, CEFR level, and native language — nothing else</td>
           <td>Only if you choose a provider, set your own API key and use "Explore Further"</td>
+        </tr>
+        <tr>
+          <td><strong>The cloud app that syncs your backup folder, if any (e.g. Google Drive, Dropbox)</strong></td>
+          <td>The backup files written to that folder (your learning data, never the AI key)</td>
+          <td>Only if you turn on automatic backup and choose a folder that app synchronises</td>
         </tr>
         <tr>
           <td><strong>Google Play</strong></td>
