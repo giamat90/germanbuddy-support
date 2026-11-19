@@ -184,7 +184,7 @@
   <div class="container">
     <div class="card">
       <h2>Privacy Policy</h2>
-      <p class="last-updated">Last updated: October 8, 2026</p>
+      <p class="last-updated">Last updated: November 19, 2026</p>
 
       <div class="info-box">
         <p><strong>In short:</strong> GermanBuddy has no account, no server, and no backend. Everything you do in the app — your level, your saved words, your streak, your review schedule — is stored only in a local database on your own device. We (the developer) never receive it, see it, or store a copy of it anywhere.</p>
@@ -193,7 +193,7 @@
       <p>GermanBuddy ("we", "our", or "the app") is developed by Giacomo Matzeu as a solo developer based in Italy. This privacy policy explains what data the app creates on your device, what — if anything — ever leaves it, and why.</p>
 
       <h3>1. There Is No Account</h3>
-      <p>GermanBuddy does not require sign-in and has no user accounts. There is no email address, password, or Google Sign-In involved in using the app. A short on-device "learner profile" (your CEFR level and native language) is created automatically the first time you open the app, tied only to a randomly generated install ID that never leaves your device.</p>
+      <p>GermanBuddy does not require sign-in and has no user accounts. There is no email address, password, or Google Sign-In involved in using the app. A short on-device "learner profile" (your CEFR level and native language) is created automatically the first time you open the app, tied only to a randomly generated install ID that GermanBuddy creates itself and that never leaves your device. (This is separate from the identifier described in section 4.)</p>
 
       <h3>2. Data Stored On Your Device</h3>
       <p>All app data lives in a local SQLite database and a small amount of local key-value storage on your phone (via <code>expo-sqlite</code> and MMKV). This includes:</p>
@@ -215,7 +215,8 @@
       <p>Use of this feature is subject to the privacy policy of the provider you choose (for example <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic's</a> or OpenAI's), since your device is communicating with that provider directly using your own key and your own account/usage limits.</p>
 
       <h3>4. Local Notifications</h3>
-      <p>If you enable reminders, GermanBuddy schedules local notifications (for your daily word and spaced-repetition reviews) directly on your device using the operating system's notification scheduler. No push token, device identifier, or notification content is sent to us or to any third party — the reminder never leaves your phone.</p>
+      <p>If you enable reminders, GermanBuddy schedules local notifications (for your daily word and spaced-repetition reviews) directly on your device using the operating system's notification scheduler. The reminder content never leaves your phone, and we never receive any identifier or notification content.</p>
+      <p><strong>Google Firebase Cloud Messaging component.</strong> The notification library the app uses (Expo Notifications) includes Google's Firebase Cloud Messaging component. Because of it, Android may create a Firebase installation identifier for the app on your device and exchange it with Google. GermanBuddy does not use this identifier, does not send push notifications, does not receive it, and uses it for no advertising, analytics or tracking. It is handled by Google under <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>.</p>
 
       <h3>5. Backup &amp; Restore</h3>
       <p>You can export a backup of your data as a single <code>.json</code> file from Settings. This is entirely user-initiated: the app hands the file to your device's normal share sheet, and it's up to you where you save it (e.g. Google Drive, Files, email to yourself). We never receive a copy of this file. By default your AI API key is not included in backup exports. If you have set one, the app asks when you export whether to include it; if you choose to, the file will contain your key and provider settings in plain text, so keep that file private. We never receive it. Restoring a backup replaces the data on your device only.</p>
@@ -241,6 +242,11 @@
           <td>Only if you turn on automatic backup and choose a folder that app synchronises</td>
         </tr>
         <tr>
+          <td><strong>Google (Firebase Cloud Messaging component of the notification library)</strong></td>
+          <td>A Firebase installation identifier created and exchanged with Google by that component; we never receive it (see section 4)</td>
+          <td>Whenever the app is installed and Android runs that component</td>
+        </tr>
+        <tr>
           <td><strong>Google Play</strong></td>
           <td>Standard install/crash diagnostics collected by the Play Store platform itself</td>
           <td>Always (governed by Google's own privacy policy, not ours)</td>
@@ -251,10 +257,10 @@
           <td>Only if you contact us — this is our support website, not the app</td>
         </tr>
       </table>
-      <p>We do not use Supabase, Firebase, Railway, Upstash, or Sentry — earlier drafts of this policy referenced a cloud backend that GermanBuddy no longer has.</p>
+      <p>We do not use Supabase, Railway, Upstash, or Sentry, and the app has no backend of its own — earlier drafts of this policy referenced a cloud backend that GermanBuddy no longer has. The only Firebase component present is the notification-library component described in section 4.</p>
 
       <h3>7. Data Sharing</h3>
-      <p>We do not sell, trade, or rent any information. There is no advertising or analytics SDK in the app, and no data collection to share in the first place — your app data simply stays on your device.</p>
+      <p>We do not sell, trade, or rent any information. There is no advertising or analytics SDK in the app, and we collect none of your data — your app data simply stays on your device. The only identifier that leaves the device is the Firebase installation identifier described in section 4, which is handled by Google and never reaches us.</p>
 
       <h3>8. Deleting Your Data</h3>
       <p>Since your data lives only on your device, you are always in full control of it. See the <a href="delete-account.html">Delete Your Data</a> page for how to remove it — uninstalling the app, or clearing its storage from your phone's settings, permanently deletes everything immediately. There is nothing stored on a server for us to delete on your behalf.</p>
