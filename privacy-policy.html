@@ -203,7 +203,7 @@
         <li><strong>Settings:</strong> notification preferences and, if you choose to use the optional AI feature described below, your own API key for the AI provider you choose</li>
       </ul>
       <p>None of this data is transmitted anywhere by default. There is no backend server for GermanBuddy to send it to.</p>
-      <p><strong>Listening to a word (text-to-speech).</strong> The speaker button next to a German word reads it aloud using the text-to-speech engine that is built into your Android device (through the <code>expo-speech</code> library). GermanBuddy has no audio files of its own, does not record or use the microphone, and does not store or receive anything from this feature. Only the single word you tapped is handed to your device's speech engine. Which engine is used, and whether it processes text on the device or online, is determined by your phone's settings and the engine's provider (for example Google or your phone manufacturer); if you use an engine that works online, that provider may receive the word under its own privacy policy. GermanBuddy does not control or see this.</p>
+      <p><strong>Listening to a word or sentence (text-to-speech).</strong> The speaker button next to a German word or example sentence reads it aloud using the text-to-speech engine that is built into your Android device (through the <code>expo-speech</code> library). GermanBuddy has no audio files of its own, does not record or use the microphone, and does not store or receive anything from this feature. Only the word or sentence you tapped (or, if you turn on the optional "read the sentence after answering" setting, the sentence of the exercise you just answered) is handed to your device's speech engine. Which engine is used, and whether it processes text on the device or online, is determined by your phone's settings and the engine's provider (for example Google or your phone manufacturer); if you use an engine that works online, that provider may receive that text under its own privacy policy. GermanBuddy does not control or see this.</p>
 
       <h3>3. Optional AI Feature ("Explore Further")</h3>
       <p>GermanBuddy includes one optional, opt-in AI feature that generates extra examples and a short usage note for a word you've saved. It is off until you turn it on, and it works differently from a typical app AI feature:</p>
@@ -249,8 +249,8 @@
         </tr>
         <tr>
           <td><strong>Your device's text-to-speech engine (e.g. Google, or your phone manufacturer's)</strong></td>
-          <td>The single German word you tap the speaker button for, to read it aloud; handled by the engine you have set on your phone, which may process it on the device or online. We never receive it</td>
-          <td>Only when you tap the speaker button</td>
+          <td>The German word or sentence you tap the speaker button for (or that is read after an exercise answer if you enable that setting), to read it aloud; handled by the engine you have set on your phone, which may process it on the device or online. We never receive it</td>
+          <td>Only when you tap a speaker button, or after an answer if you turn on automatic reading</td>
         </tr>
         <tr>
           <td><strong>Google Play</strong></td>
