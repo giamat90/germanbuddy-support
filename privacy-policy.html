@@ -184,7 +184,7 @@
   <div class="container">
     <div class="card">
       <h2>Privacy Policy</h2>
-      <p class="last-updated">Last updated: November 19, 2026</p>
+      <p class="last-updated">Last updated: November 20, 2026</p>
 
       <div class="info-box">
         <p><strong>In short:</strong> GermanBuddy has no account, no server, and no backend. Everything you do in the app — your level, your saved words, your streak, your review schedule — is stored only in a local database on your own device. We (the developer) never receive it, see it, or store a copy of it anywhere.</p>
@@ -203,6 +203,7 @@
         <li><strong>Settings:</strong> notification preferences and, if you choose to use the optional AI feature described below, your own API key for the AI provider you choose</li>
       </ul>
       <p>None of this data is transmitted anywhere by default. There is no backend server for GermanBuddy to send it to.</p>
+      <p><strong>Listening to a word (text-to-speech).</strong> The speaker button next to a German word reads it aloud using the text-to-speech engine that is built into your Android device (through the <code>expo-speech</code> library). GermanBuddy has no audio files of its own, does not record or use the microphone, and does not store or receive anything from this feature. Only the single word you tapped is handed to your device's speech engine. Which engine is used, and whether it processes text on the device or online, is determined by your phone's settings and the engine's provider (for example Google or your phone manufacturer); if you use an engine that works online, that provider may receive the word under its own privacy policy. GermanBuddy does not control or see this.</p>
 
       <h3>3. Optional AI Feature ("Explore Further")</h3>
       <p>GermanBuddy includes one optional, opt-in AI feature that generates extra examples and a short usage note for a word you've saved. It is off until you turn it on, and it works differently from a typical app AI feature:</p>
@@ -245,6 +246,11 @@
           <td><strong>Google (Firebase Cloud Messaging component of the notification library)</strong></td>
           <td>A Firebase installation identifier created and exchanged with Google by that component; we never receive it (see section 4)</td>
           <td>Whenever the app is installed and Android runs that component</td>
+        </tr>
+        <tr>
+          <td><strong>Your device's text-to-speech engine (e.g. Google, or your phone manufacturer's)</strong></td>
+          <td>The single German word you tap the speaker button for, to read it aloud; handled by the engine you have set on your phone, which may process it on the device or online. We never receive it</td>
+          <td>Only when you tap the speaker button</td>
         </tr>
         <tr>
           <td><strong>Google Play</strong></td>
